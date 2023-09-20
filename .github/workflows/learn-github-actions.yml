@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: run api test
-        working-directory: src/api
+        working-directory: ./src/api
         run: |
           npm install
           npm test
@@ -21,6 +21,16 @@ jobs:
     needs: my-pipeline
     steps:
       - uses: actions/checkout@v2
+      - name: start server
+        working-directory: e2e
+        run: |
+          npm install
+          npm run start-server
+      - name: Browser install
+        uses: abhi1693/setup-browser@v0.3.5
+        with:
+          browser: chrome
+          version: latest
       - name: run e2e tests
         working-directory: e2e
         run: |
