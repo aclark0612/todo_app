@@ -1,0 +1,8 @@
+name: testbash pipeline
+run-name: ${{ github.actor }} is at testbash
+on: [push]
+jobs:
+  my-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello testbash"
